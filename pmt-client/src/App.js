@@ -5,7 +5,7 @@ import { Routes, Route } from 'react-router-dom';
 
 import Dashboard from './components/Dashboard';
 import Header from './components/layouts/Header';
-import AddProject from './components/projects/AddProject';
+import AddProjectFunc from './components/projects/AddProjectFunc';
 
 function App() {
   return (
@@ -13,7 +13,7 @@ function App() {
       <Header />
       <Routes>
         <Route exact path="/" element={<Dashboard />} />
-        <Route exact path="/addProject" element={<AddProject />} />
+        <Route exact path="/addProject" element={<AddProjectFunc />} />
       </Routes>
     </div>
   );
