@@ -11,3 +11,8 @@ export const selectProjectStatus = createSelector(
   [selectProject],
   (project) => project.status
 );
+
+export const selectAllProjects = createSelector(
+  [selectProject],
+  (project) => project.projects
+);

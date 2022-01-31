@@ -23,6 +23,25 @@ export const createProject = (project) => async (dispatch) => {
 };
 
 /**
+ * Get All Projects
+ */
+export const getAllProjects = () => async (dispatch) => {
+  try {
+    await axios.get('http://localhost:8080/api/project/all').then((res) => {
+      dispatch({
+        type: ProjectActionTypes.GET_ALL_PROJECTS,
+        payload: res.data,
+      });
+    });
+  } catch (e) {
+    dispatch({
+      type: ProjectActionTypes.GET_ERRORS,
+      payload: e.response,
+    });
+  }
+};
+
+/**
  * Reset Status
  */
 export const resetStatus = () => ({

@@ -1,6 +1,7 @@
 import ProjectActionTypes from './ProjectTypes';
 
 const INITIAL_STATE = {
+  projects: [],
   error: '',
   status: '',
 };
@@ -17,6 +18,12 @@ const projectReducer = (state = INITIAL_STATE, action) => {
       return {
         error: '',
         status: action.payload.status,
+      };
+
+    case ProjectActionTypes.GET_ALL_PROJECTS:
+      return {
+        ...state,
+        projects: action.payload,
       };
 
     case ProjectActionTypes.RESET_STATUS:

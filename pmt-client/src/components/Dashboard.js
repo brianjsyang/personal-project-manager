@@ -1,10 +1,18 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
 import { Col, Container, Row } from 'react-bootstrap';
-import CreateProjectButton from './projects/CreateProjectButton';
 
+import { getAllProjects } from '../redux/project/ProjectActions';
+import CreateProjectButton from './projects/CreateProjectButton';
 import ProjectItem from './projects/ProjectItem';
+import { selectAllProjects } from '../redux/project/ProjectSelector';
 
 class Dashboard extends Component {
+  componentDidMount() {
+    this.props.getAllProjects();
+  }
+
   render() {
     return (
       <Container>
@@ -22,4 +30,12 @@ class Dashboard extends Component {
   }
 }
 
-export default Dashboard;
+const mapDispatchToProps = (dispatch) => ({
+  getAllProjects: () => dispatch(getAllProjects()),
+});
+
+const mapStateToProps = createStructuredSelector({
+  projects: selectAllProjects,
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
